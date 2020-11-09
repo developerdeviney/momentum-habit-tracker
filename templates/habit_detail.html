@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h3>{{ habit.habit_name }}</h3>
+
+<div class="habit-wrapper">
+
+    <div class='habit-container'>
+        <p class='habit-habit_name'>Habit {{ habit.habit_name }}</p>
+        <p class='habit-goal'>{{ habit.goal }}</p>
+    </div>
+
+    {% if request.user.is_authenticated and request.user == habit.habit_name %}
+    <p>
+        <a href="{% url 'delete_habit' pk=habit.pk %}" style="color:red;">Remove your habit</a>
+    </p>
+    {% endif %}

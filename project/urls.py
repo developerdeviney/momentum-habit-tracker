@@ -34,7 +34,7 @@ urlpatterns = [
     path(
         "core/habit/<int:pk>/",
         habit_views.create_daily_record,
-        name="create_daily_record",
+        name="create_record",
     ),
     path("core/habit/search/", habit_views.habit_search, name="habit_search"),
 ]

@@ -58,10 +58,24 @@ def delete_habit(request, pk):
     return render(request, "delete_habit.html", {"habit": habit})
 
 
+def create_record(request, pk):
+    if request.method == "GET":
+        form = RecordForm()
+    else:
+        form = RecordForm(data=request.POST)
+        if form.is_valid():
+            record = form.save(commit=False)
+            record.user = request.user
+            record.save()
+            return redirect(to="habit_detail", pk=Daily_Record.pk)
+
+    return render(request, "create_record.html", {"form": form})
+
+
 @login_required
 def delete_daily_record(request, pk):
     daily_record = get_object_or_404(
-        Record.objects.filter(user_habit=request.user, pk=pk)
+        Daily_Record.objects.filter(user_habit=request.user, pk=pk)
     )
     if request.method == POST:
         record.delete()

@@ -27,7 +27,7 @@ urlpatterns = [
     path("core/habit/edit/", habit_views.edit_habit, name="edit_habit"),
     path("core/habit/<int:pk>/", habit_views.delete_habit, name="delete_habit"),
     path("core/habit/<int:pk>/", habit_views.delete_daily_record, name="delete_record"),
-    path("core/habit/<int:pk>/", habit_views.create_daily_record, name="create_record"),
+    path("core/habit/<int:pk>/", habit_views.create_record, name="create_record"),
     path("core/habit/search/", habit_views.habit_search, name="habit_search"),
 ]
 

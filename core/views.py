@@ -78,7 +78,7 @@ def delete_daily_record(request, pk):
         Daily_Record.objects.filter(user_habit=request.user, pk=pk)
     )
     if request.method == POST:
-        record.delete()
+        daily_record.delete()
         return redirect("habit_list")
 
     return render(request, "delete_record.html", {"daily_record": daily_record})
